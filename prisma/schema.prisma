@@ -1,0 +1,30 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model LabReport {
+  id          String   @id @default(uuid())
+  title       String
+  patientName String   @default("Guest")
+  reportDate  DateTime
+  labName     String?
+  sourceImage String?
+  markers     String // JSON: Marker[]
+  summary     String? // AI plain-language summary (markdown)
+  redFlags    String? // JSON: RedFlag[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model SymptomSession {
+  id         String   @id @default(uuid())
+  messages   String // JSON: ChatMessage[]
+  assessment String? // JSON: TriageAssessment
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}

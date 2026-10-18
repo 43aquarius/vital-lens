@@ -1,0 +1,25 @@
+# dependencies / build
+node_modules/
+.next/
+out/
+build/
+dist/
+
+# environment
+.env
+.env.*
+!.env.example
+
+# database (runtime artifact)
+db/
+*.db
+*.db-journal
+
+# logs
+dev.log
+server.log
+*.log
+
+# misc
+.DS_Store
+*.pem
